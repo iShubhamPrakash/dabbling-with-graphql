@@ -24,6 +24,7 @@ const schema = buildSchema(`
   }
 
   type Query {
+    test: String
     users : [User]
     posts: [Post]
     user(id: ID): User
