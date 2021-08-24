@@ -1,23 +1,17 @@
 const express = require('express');
 const cors = require('cors');
 const { graphqlHTTP } = require('express-graphql');
-const { schema } = require('./schema/schema')
-
+const { schema } = require('./graphql/schema/schema');
+const { rootResolver } = require('./graphql/resolvers');
 
 const app = express();
 
 app.use(cors());
 
-var root = {
-  test: () => {
-    return console.log("test")
-  }
-};
-
-app.use("/graphql",graphqlHTTP({
+app.use("/graphql", graphqlHTTP({
   schema: schema,
   graphiql: true,
-  rootValue: root,
+  rootValue: rootResolver,
 }))
 
 const PORT = 4000;
