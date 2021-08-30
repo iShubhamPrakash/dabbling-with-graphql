@@ -1,0 +1,22 @@
+{
+  "name": "uta-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Shubham Prakash <28767301+iShubhamPrakash@users.noreply.github.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "dependencies": {
+    "apollo-server-core": "^3.3.0",
+    "apollo-server-express": "^3.3.0",
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
+    "graphql": "^15.5.1",
+    "mongoose": "^6.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}

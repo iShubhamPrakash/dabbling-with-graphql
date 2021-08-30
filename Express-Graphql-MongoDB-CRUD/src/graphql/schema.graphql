@@ -1,0 +1,121 @@
+type User {
+	id: ID!
+	name: String!
+	email: String!
+	phone: String!
+	dob: String!
+	company: String!
+}
+
+type Company {
+  id: ID!
+	name: String!
+	website: String!
+	address: String!
+	employeesCount: Int!
+}
+
+type CovidCountryInfo {
+  _id: Float
+  iso2: String
+  iso3: String
+  lat: Float
+  long: Float
+  flag: String
+}
+
+type CountriesCovidData {
+  updated: Float
+  country: String
+  cases: Float
+  todayCases: Float
+  deaths: Float
+  todayDeaths: Float
+  recovered: Float
+  todayRecovered: Float
+  active: Float
+  critical: Float
+  casesPerOneMillion: Float
+  deathsPerOneMillion: Float
+  tests: Float
+  testsPerOneMillion: Float
+  population: Float
+  continent: String
+  oneCasePerPeople: Float
+  oneDeathPerPeople: Float
+  oneTestPerPeople: Float
+  activePerOneMillion: Float
+  recoveredPerOneMillion: Float
+  criticalPerOneMillion: Float
+  countryInfo: CovidCountryInfo
+}
+
+type CountrtCovidAll { updated: Float
+  cases: Int
+  todayCases: Int
+  deaths: Int
+  todayDeaths: Int
+  recovered: Int
+  todayRecovered: Int
+  active: Int
+  critical: Int
+  casesPerOneMillion: Float
+  deathsPerOneMillion: Float
+  tests: Int
+  testsPerOneMillion: Float
+  population: Int
+  continent: String
+  activePerOneMillion: Float
+  recoveredPerOneMillion: Float
+  criticalPerOneMillion: Float
+  countries: [String ]
+  }
+
+type Query {
+  test: String!
+  allUsers: [User!]!
+  allCompanies: [Company!]!
+
+  getAllCovidData: [CountrtCovidAll]
+  getCovidDataOfCountry(country: String!): CountriesCovidData
+}
+
+input UserInput {
+	name: String!
+	email: String!
+	phone: String!
+	dob: String!
+	company: String!
+}
+
+input UserUpdateInput {
+	name: String
+	email: String
+	phone: String
+	dob: String
+	company: String
+}
+
+input CompanyInput {
+  name: String!
+	website: String!
+	address: String!
+	employeesCount: Int!
+}
+
+input CompanyUpdateInput {
+  name: String
+	website: String
+	address: String
+	employeesCount: Int
+}
+
+type Mutation {
+  addUser( user: UserInput): User!
+  updateUser(id: ID!, user: UserUpdateInput): User!
+  deleteUser( id: ID!): User
+
+  addCompany( company: CompanyInput): Company!
+  updateCompany(id: ID!, company: CompanyUpdateInput): Company!
+  deleteCompany( id: ID!): Company
+}
